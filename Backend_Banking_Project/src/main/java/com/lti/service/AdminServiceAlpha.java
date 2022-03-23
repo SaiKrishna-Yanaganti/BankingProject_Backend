@@ -43,4 +43,18 @@ public class AdminServiceAlpha implements AdminService{
 
 	
 
+	@Override
+	public boolean accountStatus(long accountNumber) {
+		// TODO Auto-generated method stub
+		
+		if(adminRepository.updateAccountStatus(accountNumber)!=0) {
+			return true;
+		}
+		else {
+			return false;
+		}
+		
+	}
+	
+
 }

@@ -15,6 +15,7 @@ public class CustomerServiceAlpha implements CustomerService {
 	@Override
 	public boolean addCustomer(Customer customer) {
 		// TODO Auto-generated method stub
+		customer.setAccountStatus("No");
 		customerRepository.save(customer);
 		return true;
 	}

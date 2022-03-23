@@ -60,5 +60,21 @@ public class AdminController {
 		}
 		return responseEntity;
 	}
+	@GetMapping("accountStatus/{accountNumber}")
+	public ResponseEntity<String> accountStatus(@PathVariable("accountNumber")long accountNumber){
+		ResponseEntity<String> responseEntity=null;
+		
+		String message=null;
+		boolean result=adminService.accountStatus(accountNumber);
+		if(result) {
+			message="Account Approved";
+			responseEntity= new ResponseEntity<String>(message,HttpStatus.OK);
+		}
+		else {
+			message="Acccount is Not Approved";
+			responseEntity= new ResponseEntity<String>(message,HttpStatus.CONFLICT);
+		}
+		return responseEntity;
+	}
 
 }

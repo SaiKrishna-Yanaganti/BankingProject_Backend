@@ -24,6 +24,7 @@ public class Customer {
 	private String userName;
 	private String password;
 	private int accountBalance;
+	private String accountStatus;
 
 	public Customer() {
 		// TODO Auto-generated constructor stub
@@ -132,10 +133,19 @@ public class Customer {
 	public void setAccountBalance(int accountBalance) {
 		this.accountBalance = accountBalance;
 	}
+	
+
+	public String getAccountStatus() {
+		return accountStatus;
+	}
+
+	public void setAccountStatus(String accountStatus) {
+		this.accountStatus = accountStatus;
+	}
 
 	public Customer(String title, String firstName, String lastName, String middleName, String mobileNumber,
 			String email, String aadharNumber, String dob, String address, long accountNumber, String userName,
-			String password, int accountBalance) {
+			String password, int accountBalance,String accountStatus) {
 		super();
 		this.title = title;
 		this.firstName = firstName;
@@ -150,6 +160,7 @@ public class Customer {
 		this.userName = userName;
 		this.password = password;
 		this.accountBalance = accountBalance;
+		this.accountStatus = accountStatus;
 	}
 
 	@Override
@@ -157,13 +168,13 @@ public class Customer {
 		return "Customer [title=" + title + ", firstName=" + firstName + ", lastName=" + lastName + ", middleName="
 				+ middleName + ", mobileNumber=" + mobileNumber + ", email=" + email + ", aadharNumber=" + aadharNumber
 				+ ", dob=" + dob + ", address=" + address + ", accountNumber=" + accountNumber + ", userName="
-				+ userName + ", password=" + password + ", accountBalance=" + accountBalance + "]";
+				+ userName + ", password=" + password + ", accountBalance=" + accountBalance + ", accountStatus="+accountStatus+"]";
 	}
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(aadharNumber, accountBalance, accountNumber, address, dob, email, firstName, lastName,
-				middleName, mobileNumber, password, title, userName);
+				middleName, mobileNumber, password, title, userName,accountStatus);
 	}
 
 	@Override
@@ -181,7 +192,7 @@ public class Customer {
 				&& Objects.equals(firstName, other.firstName) && Objects.equals(lastName, other.lastName)
 				&& Objects.equals(middleName, other.middleName) && Objects.equals(mobileNumber, other.mobileNumber)
 				&& Objects.equals(password, other.password) && Objects.equals(title, other.title)
-				&& Objects.equals(userName, other.userName);
+				&& Objects.equals(userName, other.userName)&& Objects.equals(accountStatus, other.accountStatus);
 	}
 	
 
