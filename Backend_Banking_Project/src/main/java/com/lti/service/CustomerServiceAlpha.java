@@ -21,6 +21,8 @@ public class CustomerServiceAlpha implements CustomerService {
 	@Override
 	public boolean addCustomer(Customer customer) {
 		// TODO Auto-generated method stub
+		long accountNumber=(long)(1000000000+Math.random()*900000000);
+		customer.setAccountNumber(accountNumber);
 		customer.setAccountStatus("No");
 		customerRepository.save(customer);
 		return true;
