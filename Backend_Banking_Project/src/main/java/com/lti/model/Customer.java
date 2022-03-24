@@ -25,6 +25,7 @@ public class Customer {
 	private String password;
 	private int accountBalance;
 	private String accountStatus;
+	private String remarks;
 
 	public Customer() {
 		// TODO Auto-generated constructor stub
@@ -143,9 +144,20 @@ public class Customer {
 		this.accountStatus = accountStatus;
 	}
 
+	
+	
+	
+	public String getRemarks() {
+		return remarks;
+	}
+
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
+
 	public Customer(String title, String firstName, String lastName, String middleName, String mobileNumber,
 			String email, String aadharNumber, String dob, String address, long accountNumber, String userName,
-			String password, int accountBalance,String accountStatus) {
+			String password, int accountBalance,String accountStatus,String remarks) {
 		super();
 		this.title = title;
 		this.firstName = firstName;
@@ -161,6 +173,7 @@ public class Customer {
 		this.password = password;
 		this.accountBalance = accountBalance;
 		this.accountStatus = accountStatus;
+		this.remarks=remarks;
 	}
 
 	@Override
@@ -168,7 +181,7 @@ public class Customer {
 		return "Customer [title=" + title + ", firstName=" + firstName + ", lastName=" + lastName + ", middleName="
 				+ middleName + ", mobileNumber=" + mobileNumber + ", email=" + email + ", aadharNumber=" + aadharNumber
 				+ ", dob=" + dob + ", address=" + address + ", accountNumber=" + accountNumber + ", userName="
-				+ userName + ", password=" + password + ", accountBalance=" + accountBalance + ", accountStatus="+accountStatus+"]";
+				+ userName + ", password=" + password + ", accountBalance=" + accountBalance + ", accountStatus="+accountStatus+"remarks"+remarks+"]";
 	}
 
 	@Override
@@ -192,7 +205,8 @@ public class Customer {
 				&& Objects.equals(firstName, other.firstName) && Objects.equals(lastName, other.lastName)
 				&& Objects.equals(middleName, other.middleName) && Objects.equals(mobileNumber, other.mobileNumber)
 				&& Objects.equals(password, other.password) && Objects.equals(title, other.title)
-				&& Objects.equals(userName, other.userName)&& Objects.equals(accountStatus, other.accountStatus);
+				&& Objects.equals(userName, other.userName)&& Objects.equals(accountStatus, other.accountStatus)
+		&& Objects.equals(remarks, other.remarks);
 	}
 	
 

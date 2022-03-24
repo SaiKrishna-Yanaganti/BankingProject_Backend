@@ -84,7 +84,7 @@ public class CustomerController {
 		String message=null;
 		boolean flag=customerService.deposit(accountNumber, amount);
 		if(flag==true) {
-			message="Deposited Rs."+amount+"into account Number"+accountNumber+" successfully";
+			message="Deposited Rs."+amount+" into account Number "+accountNumber+" successfully";
 			responseEntity= new ResponseEntity<String>(message,HttpStatus.OK);
 		}
 		else {
@@ -100,7 +100,7 @@ public class CustomerController {
 		String message=null;
 		boolean flag=customerService.withdraw(accountNumber, amount);
 		if(flag==true) {
-			message="Withdawal of Rs."+amount+"from account Number"+accountNumber+" was successful";
+			message="Withdawal of Rs."+amount+" from account Number "+accountNumber+" was successful";
 			responseEntity= new ResponseEntity<String>(message,HttpStatus.OK);
 		}
 		else {

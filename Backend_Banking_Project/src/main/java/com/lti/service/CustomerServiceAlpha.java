@@ -1,8 +1,11 @@
 package com.lti.service;
 
+import java.time.LocalDate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.lti.model.Account;
 import com.lti.model.Customer;
 import com.lti.repository.CustomerRepository;
 
@@ -11,6 +14,9 @@ public class CustomerServiceAlpha implements CustomerService {
 
 	@Autowired
 	CustomerRepository customerRepository;
+	
+	@Autowired
+	AccountService accountService;
 	
 	@Override
 	public boolean addCustomer(Customer customer) {
@@ -50,8 +56,16 @@ public class CustomerServiceAlpha implements CustomerService {
 		int actualBalance=customer.getAccountBalance();
 		int newBalance=actualBalance+amount;
 		int result= customerRepository.updateAmount(newBalance, accountNumber);
-		if(result!=0)
+		if(result!=0) {
+			long transactionId=(long)(10000000+Math.random()*90000000);
+			String transactionType="credit";
+			LocalDate date=LocalDate.now();
+			String remarks="Rs."+amount+" credited to your account";
+			Account account=new Account(accountNumber,transactionId,transactionType,amount,0,"",date,remarks);
+			accountService.addAccount(account);
 			return true;
+		}
+			
 		else
 			return false;
 	}
@@ -64,8 +78,16 @@ public class CustomerServiceAlpha implements CustomerService {
 			int actualBalance=customer.getAccountBalance();
 			int newBalance=actualBalance-amount;
 			int result= customerRepository.updateAmount(newBalance, accountNumber);
-			if(result!=0)
+			if(result!=0){
+				long transactionId=(long)(10000000+Math.random()*90000000);
+				String transactionType="debit";
+				LocalDate date=LocalDate.now();
+				String remarks="Rs."+amount+" debited from your account";
+				Account account=new Account(accountNumber,transactionId,transactionType,amount,0,"",date,remarks);
+				accountService.addAccount(account);
 				return true;
+			}
+				
 			else
 				return false;
 		}
@@ -80,8 +102,17 @@ public class CustomerServiceAlpha implements CustomerService {
 		// TODO Auto-generated method stub
 		boolean withdrawFlag=withdraw(fromAccountNumber, amount);
 		boolean depositFlag=deposit(toAccountNumber, amount);
-		if(withdrawFlag&&depositFlag) 
-			return true;
+		if(withdrawFlag&&depositFlag) {
+			long transactionId=(long)(10000000+Math.random()*90000000);
+		String transactionType="transfer";
+		Customer customer=customerRepository.findByAccountNumber(toAccountNumber);
+		String toName=customer.getFirstName()+" "+customer.getLastName();
+		LocalDate date=LocalDate.now();
+		String remarks="Rs."+amount+" Transfer from "+fromAccountNumber+" to "+toAccountNumber;
+		Account account=new Account(fromAccountNumber,transactionId,transactionType,amount,toAccountNumber,toName,date,remarks);
+		accountService.addAccount(account);
+		return true;
+		}
 		else
 			return false;
 	}
