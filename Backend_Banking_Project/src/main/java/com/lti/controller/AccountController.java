@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.model.Account;
-import com.lti.model.Customer;
+
 import com.lti.service.AccountService;
 
 @RestController

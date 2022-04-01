@@ -1,5 +1,7 @@
 package com.lti.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,8 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lti.model.Account;
 import com.lti.model.Admin;
-
+import com.lti.model.Customer;
 import com.lti.repository.AdminRepository;
 import com.lti.service.AdminService;
 
@@ -76,5 +79,7 @@ public class AdminController {
 		}
 		return responseEntity;
 	}
+	
+	
 
 }

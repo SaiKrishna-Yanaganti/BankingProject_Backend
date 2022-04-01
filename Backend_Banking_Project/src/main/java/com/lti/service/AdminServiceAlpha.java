@@ -1,5 +1,7 @@
 package com.lti.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +18,7 @@ public class AdminServiceAlpha implements AdminService{
 	@Override
 	public boolean addAdmin(Admin admin) {
 		
-		// TODO Auto-generated method stub
+	
 		adminRepository.save(admin);
 		return true;
 		
@@ -55,6 +57,7 @@ public class AdminServiceAlpha implements AdminService{
 		}
 		
 	}
-	
 
+	
+	
 }
