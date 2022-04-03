@@ -24,6 +24,7 @@ public class CustomerServiceAlpha implements CustomerService {
 		long accountNumber=(long)(1000000000+Math.random()*900000000);
 		customer.setAccountNumber(accountNumber);
 		customer.setAccountStatus("No");
+		customer.setAccountBalance(1000);
 		customerRepository.save(customer);
 		return true;
 	}
@@ -57,6 +58,7 @@ public class CustomerServiceAlpha implements CustomerService {
 		Customer customer=customerRepository.findByAccountNumber(accountNumber);
 		int actualBalance=customer.getAccountBalance();
 		int newBalance=actualBalance+amount;
+		System.out.println("balance in to account : "+newBalance +"actual :"+actualBalance+" amount"+ amount);
 		int result= customerRepository.updateAmount(newBalance, accountNumber);
 		if(result!=0) {
 			long transactionId=(long)(10000000+Math.random()*90000000);
@@ -79,6 +81,7 @@ public class CustomerServiceAlpha implements CustomerService {
 		if(customer!=null) {
 			int actualBalance=customer.getAccountBalance();
 			int newBalance=actualBalance-amount;
+			System.out.println("my balance after transaction: "+newBalance);
 			int result= customerRepository.updateAmount(newBalance, accountNumber);
 			if(result!=0){
 				long transactionId=(long)(10000000+Math.random()*90000000);
